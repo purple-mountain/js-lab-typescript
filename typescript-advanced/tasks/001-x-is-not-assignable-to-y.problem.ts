@@ -2,7 +2,7 @@ interface UserProfile {
   id: string;
 
   preferences: {
-    theme: "light" | "dark";
+    theme: "light" | "dark" | "blue";
   };
 }
 
@@ -12,3 +12,4 @@ let user: UserProfile = {
     theme: "blue",
   },
 };
+

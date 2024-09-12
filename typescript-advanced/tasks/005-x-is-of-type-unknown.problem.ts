@@ -1,4 +1,4 @@
-const somethingDangerous = () => {
+const somethingDangerous = (): never | void => {
   if (Math.random() > 0.5) {
     throw new Error("Oh dear!");
   }
@@ -7,5 +7,8 @@ const somethingDangerous = () => {
 try {
   somethingDangerous();
 } catch (error) {
-  console.log(error.message);
+  if (error instanceof Error) {
+    console.log(error.message);
+  }
 }
+
