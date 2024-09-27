@@ -1,12 +1,12 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { Todo } from "./types/todo";
 import { TodoMessage } from "./components/TodoMessage";
 import { TodoList } from "./components/TodoList";
 import { TodoForm } from "./components/TodoForm";
+import { useTodo } from "./hooks/useTodo";
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const { todos, removeTodo, addTodo, toggleTaskCompletion } = useTodo();
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -23,9 +23,13 @@ function App() {
 
   return (
     <main>
+      <TodoForm todos={todos} addTodo={addTodo} />
+      <TodoList
+        todos={todos}
+        removeTodo={removeTodo}
+        toggleTaskCompletion={toggleTaskCompletion}
+      />
       {message !== "" && <TodoMessage message={message} />}
-      <TodoForm todos={todos} setTodos={setTodos} />
-      <TodoList todos={todos} setTodos={setTodos} />
     </main>
   );
 }

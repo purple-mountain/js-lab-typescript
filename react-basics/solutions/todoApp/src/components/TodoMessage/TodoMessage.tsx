@@ -1,6 +1,6 @@
 export function TodoMessage({ message }: { message: string }) {
   return (
-    <div className="mb-3">
+    <div className="flex justify-center mb-3">
       <p>{message}</p>
     </div>
   );

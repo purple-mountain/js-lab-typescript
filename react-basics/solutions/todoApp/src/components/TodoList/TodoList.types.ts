@@ -2,5 +2,6 @@ import { Todo } from "../../types/todo";
 
 export type TodoListProps = {
   todos: Todo[];
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  removeTodo: (id: string) => void;
+  toggleTaskCompletion: (id: string) => void;
 };

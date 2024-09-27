@@ -1,31 +1,32 @@
-import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
 import { createTodoSchema } from "../../schemas/createTodoSchema";
-import { CreateTodoSchema, TodoFormProps } from "./TodoForm.types";
+import { TodoFormProps } from "./TodoForm.types";
+import { CreateTodoSchema } from "../../types/todo";
 import { Button, TextField } from "@mui/material";
 
-export function TodoForm({ setTodos, todos }: TodoFormProps) {
-  const IDRef = useRef(0);
-
+export function TodoForm({ addTodo }: TodoFormProps) {
   const { handleSubmit, register, reset } = useForm<CreateTodoSchema>({
     resolver: zodResolver(createTodoSchema),
   });
 
   function onSubmit(data: CreateTodoSchema) {
-    setTodos([...todos, { ...data, id: ++IDRef.current, completed: false }]);
+    addTodo(data);
     reset();
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex space-x-6 mb-5">
       <TextField
         id="outlined-basic"
         label="Outlined"
         variant="outlined"
+        size="small"
         {...register("name")}
       />
-      <Button variant="contained">Submit</Button>
+      <Button variant="contained" size="medium">
+        Submit
+      </Button>
     </form>
   );
 }

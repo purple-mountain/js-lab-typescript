@@ -1,10 +1,6 @@
-import { z } from "zod";
-import { Todo } from "../../types/todo";
-import { createTodoSchema } from "../../schemas/createTodoSchema";
+import { CreateTodoSchema, Todo } from "../../types/todo";
 
 export type TodoFormProps = {
   todos: Todo[];
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  addTodo: (data: CreateTodoSchema) => void;
 };
-
-export type CreateTodoSchema = z.infer<typeof createTodoSchema>;
