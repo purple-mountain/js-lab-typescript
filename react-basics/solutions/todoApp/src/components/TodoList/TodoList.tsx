@@ -1,10 +1,6 @@
-import { Todo } from "../types/todo";
-import { TodoView } from "./todoView";
-
-type TodoListProps = {
-  todos: Todo[];
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
-};
+import { Button, Checkbox } from "@mui/material";
+import { TodoItem } from "../TodoItem";
+import { TodoListProps } from "./TodoList.types";
 
 export function TodoList({ todos, setTodos }: TodoListProps) {
   function toggleTaskCompletion(id: number) {
@@ -20,21 +16,20 @@ export function TodoList({ todos, setTodos }: TodoListProps) {
     setTodos(filteredTodos);
   }
 
-  console.log(todos);
-
   return (
     <div className="space-y-4 mb-4">
       {todos.map((todo) => (
         <div className="flex items-center justify-between" key={todo.id}>
           <div className="flex space-x-4">
-            <TodoView todo={todo} />
-            <input
+            <TodoItem todo={todo} />
+            <Checkbox
               checked={todo.completed}
-              type="checkbox"
               onChange={() => toggleTaskCompletion(todo.id)}
             />
           </div>
-          <button onClick={() => removeTodo(todo.id)}>Remove</button>
+          <Button onClick={() => removeTodo(todo.id)} variant="contained">
+            Remove
+          </Button>
         </div>
       ))}
     </div>

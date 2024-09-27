@@ -1,9 +1,9 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import { Todo } from "./types/todo";
-import { TodoList } from "./components/todoList";
-import { TodoForm } from "./components/todoForm";
-import { TodoMessage } from "./components/todoMessage";
+import { TodoMessage } from "./components/TodoMessage";
+import { TodoList } from "./components/TodoList";
+import { TodoForm } from "./components/TodoForm";
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -24,8 +24,8 @@ function App() {
   return (
     <main>
       {message !== "" && <TodoMessage message={message} />}
-      <TodoList todos={todos} setTodos={setTodos} />
       <TodoForm todos={todos} setTodos={setTodos} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </main>
   );
 }
