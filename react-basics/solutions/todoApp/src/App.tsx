@@ -1,37 +1,8 @@
 import "./App.css";
-import { useEffect, useState } from "react";
-import { TodoMessage } from "./components/TodoMessage";
-import { TodoList } from "./components/TodoList";
-import { TodoForm } from "./components/TodoForm";
-import { useTodo } from "./hooks/useTodo";
+import { Todo } from "./pages/Todo";
 
 function App() {
-  const { todos, removeTodo, addTodo, toggleTaskCompletion } = useTodo();
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    const allTodosCompleted = todos.every((todo) => todo.completed === true);
-
-    if (todos.length === 0) {
-      setMessage("No tasks are left");
-    } else if (allTodosCompleted) {
-      setMessage("All tasks are completed");
-    } else {
-      setMessage("");
-    }
-  }, [todos]);
-
-  return (
-    <main>
-      <TodoForm todos={todos} addTodo={addTodo} />
-      <TodoList
-        todos={todos}
-        removeTodo={removeTodo}
-        toggleTaskCompletion={toggleTaskCompletion}
-      />
-      {message !== "" && <TodoMessage message={message} />}
-    </main>
-  );
+  return <Todo />;
 }
 
 export default App;

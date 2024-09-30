@@ -1,7 +1,7 @@
-import { Todo } from "../../types/todo";
+import { TodoModel } from "../../Todo.types";
 
 export type TodoListProps = {
-  todos: Todo[];
+  todos: TodoModel[];
   removeTodo: (id: string) => void;
   toggleTaskCompletion: (id: string) => void;
 };

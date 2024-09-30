@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Todo } from "../types/todo";
-import { CreateTodoSchema } from "../types/todo";
+import { TodoModel } from "../Todo.types";
+import { CreateTodoSchema } from "../Todo.types";
 import { v4 as uuidv4 } from "uuid";
 
 export function useTodo() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<TodoModel[]>([]);
 
   function removeTodo(id: string) {
     const filteredTodos = todos.filter((todo) => todo.id !== id);

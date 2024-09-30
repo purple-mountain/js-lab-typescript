@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
-import { createTodoSchema } from "../../schemas/createTodoSchema";
+import { createTodoSchema } from "../../schemas";
 import { TodoFormProps } from "./TodoForm.types";
-import { CreateTodoSchema } from "../../types/todo";
+import type { CreateTodoSchema } from "../../Todo.types";
 import { Button, TextField } from "@mui/material";
 
 export function TodoForm({ addTodo }: TodoFormProps) {

@@ -1,6 +1,6 @@
-import { Todo } from "../../types/todo";
+import { TodoModel } from "../../Todo.types";
 
-export function TodoItem({ todo }: { todo: Todo }) {
+export function TodoItem({ todo }: { todo: TodoModel }) {
   return (
     <div>
       <p className={todo.completed ? "line-through text-gray-600" : ""}>
